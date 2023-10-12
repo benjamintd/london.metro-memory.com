@@ -1,5 +1,6 @@
 export const BEG_THRESHOLD = 0.3;
 
+// @todo see the src/data/features.json file for which lines exist
 export const METRO_LINES = [
   "METRO 1",
   "METRO 2",
