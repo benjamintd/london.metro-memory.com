@@ -50,6 +50,23 @@ const main = async () => {
     })
     .filter((f) => availableLines.has(f.properties.line));
 
+  const featuresRoutes = routes.flatMap((route: any) => {
+    return route.patterns.map((pattern: any) => {
+      return {
+        type: "Feature",
+        geometry: {
+          type: "LineString",
+          coordinates: pattern.path.map((coord: any) => [coord[1], coord[0]]),
+        },
+        properties: {
+          line: route.live_line_code,
+          name: route.name,
+          color: route.color,
+        },
+      };
+    });
+  });
+
   Bun.write(
     path.join(__dirname, "../data/features.json"),
     JSON.stringify({
@@ -62,6 +79,14 @@ const main = async () => {
           (stations) => stations.length
         ),
       },
+    })
+  );
+
+  Bun.write(
+    path.join(__dirname, "../data/routes.json"),
+    JSON.stringify({
+      type: "FeatureCollection",
+      features: featuresRoutes,
     })
   );
 };

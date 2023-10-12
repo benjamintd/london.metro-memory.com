@@ -128,10 +128,10 @@ export default function Home() {
 
     const mapboxMap = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/benjamintd/clneoq08i03y101r7ek1z305r", // @todo
+      style: "mapbox://styles/benjamintd/clnn5gpss008301qp0qpfef1j",
       bounds: [
-        [2.21, 48.815573],
-        [2.47, 48.91],
+        [-0.15, 51.65],
+        [0.15, 51.35],
       ],
       minZoom: 6,
       fadeDuration: 50,
@@ -375,9 +375,9 @@ export default function Home() {
     <main className="flex flex-row items-center justify-between h-screen">
       <div className="relative flex justify-center h-full grow">
         <div className="absolute top-0 left-0 w-full h-full" id="map" />
-        <div className="absolute w-96 max-w-full px-1 h-12 top-4 lg:top-32">
+        <div className="absolute h-12 max-w-full px-1 w-96 top-4 lg:top-32">
           <FoundSummary
-            className="mb-4 lg:hidden bg-white rounded-lg shadow-md p-4"
+            className="p-4 mb-4 bg-white rounded-lg shadow-md lg:hidden"
             foundStationsPerLine={foundStationsPerLine}
             stationsPerLine={fc.properties.stationsPerLine}
             foundStationsPerMode={foundStationsPerMode}
@@ -409,7 +409,7 @@ export default function Home() {
           stationsPerLine={fc.properties.stationsPerLine}
           minimizable
         />
-        <hr className="w-full border-b border-blue-100 my-4" />
+        <hr className="w-full my-4 border-b border-blue-100" />
         <FoundList
           found={found}
           idMap={idMap}
