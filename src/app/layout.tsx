@@ -1,0 +1,46 @@
+import Analytics from "@/components/Analytics";
+import "./globals.css";
+import { Metadata } from "next";
+import localFont from "next/font/local";
+
+const font = localFont({
+  src: [
+    {
+      path: "../fonts/sans.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/sans-bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-sans",
+});
+export const metadata: Metadata = {
+  title: "London Tube Memory Game",
+  description:
+    "How many of the London Underground stations can you name from memory?",
+  openGraph: {
+    title: "London Tube Memory Game",
+    description:
+      "How many of the London Underground stations can you name from memory?",
+    type: "website",
+    locale: "en_GB",
+    url: "https://london-memory.vercel.app/",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html className={font.className} lang="en">
+      <body className={font.className}>{children}</body>
+      <Analytics />
+    </html>
+  );
+}
