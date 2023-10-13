@@ -22,8 +22,8 @@ const ProgressBars = ({
                 background
                 backgroundPadding={2}
                 styles={buildStyles({
-                  backgroundColor: LINES[line].color,
-                  pathColor: LINES[line].textColor,
+                  backgroundColor: LINES[line].backgroundColor,
+                  pathColor: "white",
                   trailColor: "transparent",
                 })}
                 value={
@@ -34,7 +34,7 @@ const ProgressBars = ({
             </div>
             <Image
               alt={line}
-              src={`/images/${LINES[line]?.name}.png`}
+              src={`/images/${line}.png`}
               width={64}
               height={64}
               className="h-4 w-4 @md:h-6 @md:w-6 rounded-full overflow-hidden z-20 object-cover"

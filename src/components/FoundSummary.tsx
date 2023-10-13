@@ -48,7 +48,7 @@ const FoundSummary = ({
           scalar: 2,
           shapeOptions: {
             image: newFoundLines.map((line) => ({
-              src: `/images/${LINES[line].name}.png`,
+              src: `/images/${line}.png`,
               width: 64,
               height: 64,
             })),

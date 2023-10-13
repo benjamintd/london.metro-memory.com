@@ -192,10 +192,10 @@ const GroupedLine = memo(
                 <Image
                   key={feature.id!}
                   alt={feature.properties.line}
-                  src={`/images/${LINES[feature.properties.line]?.name}.png`}
+                  src={`/images/${feature.properties.line}.png`}
                   width={64}
                   height={64}
-                  className="w-5 h-5 -mr-0.5"
+                  className="w-5 h-5 -mr-0.5 overflow-visible object-cover"
                 />
               ) : (
                 <StreetIcon key={feature.id!} className="w-5 h-5 -mr-0.5" />
