@@ -18,7 +18,7 @@ export default function SortMenu({
     <div className="h-8 w-16">
       <Listbox value={sort} onChange={setSort}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full flex items-center justify-between cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300">
+          <Listbox.Button className="relative w-full flex items-center justify-between cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow focus:outline-none focus-visible:border-zinc-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300">
             <span className="font-bold text-gray-600 text-xs whitespace-nowrap">
               {sortOptions.find((o) => o.id === sort)!.shortName}
             </span>
@@ -52,7 +52,7 @@ const Option = ({ option }: { option: SortOption }) => {
           className={classNames(
             "relative cursor-default select-none py-2 pl-10 pr-4",
             {
-              "bg-blue-100 text-blue-900": active,
+              "bg-zinc-100 text-zinc-900": active,
               "text-gray-900": !active,
             }
           )}
@@ -65,7 +65,7 @@ const Option = ({ option }: { option: SortOption }) => {
             {option.name}
           </span>
           {selected ? (
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-600">
               <CheckIcon className="h-5 w-5" aria-hidden="true" />
             </span>
           ) : null}

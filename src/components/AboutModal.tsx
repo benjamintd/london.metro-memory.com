@@ -50,7 +50,7 @@ export default function AboutModal({
                           href="https://twitter.com/_benjamintd"
                           target="_blank"
                           rel="noreferrer"
-                          className="text-blue-600 hover:text-blue-500"
+                          className="text-zinc-600 hover:text-zinc-500"
                         >
                           Benjamin TD
                         </a>{" "}
@@ -62,10 +62,10 @@ export default function AboutModal({
                 <div className="mt-5 sm:mt-6">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                    className="inline-flex w-full justify-center rounded-md bg-zinc-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-600"
                     onClick={() => setOpen(false)}
                   >
-                    Retour au jeu
+                    Back to the game
                   </button>
                 </div>
               </Dialog.Panel>

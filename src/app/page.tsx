@@ -130,8 +130,8 @@ export default function Home() {
       container: "map",
       style: "mapbox://styles/benjamintd/clnn5gpss008301qp0qpfef1j",
       bounds: [
-        [-0.15, 51.65],
-        [0.15, 51.35],
+        [-0.619997, 51.323273],
+        [0.35504, 51.68869],
       ],
       minZoom: 6,
       fadeDuration: 50,
@@ -338,39 +338,6 @@ export default function Home() {
     [map, idMap]
   );
 
-  const foundStationsPerMode = useMemo(() => {
-    const stationsPerLine = fc.properties.stationsPerLine;
-    let foundStationsPercentagePerMode: Record<string, number> = {};
-    for (let line of Object.keys(foundStationsPerLine)) {
-      const mode = getMode(line);
-
-      if (!foundStationsPercentagePerMode[mode]) {
-        foundStationsPercentagePerMode[mode] = 0;
-      }
-
-      foundStationsPercentagePerMode[mode] += foundStationsPerLine[line];
-    }
-
-    const stationsPerMode = Object.keys(stationsPerLine).reduce((acc, line) => {
-      const mode = getMode(line);
-
-      if (!acc[mode]) {
-        acc[mode] = 0;
-      }
-
-      acc[mode] += stationsPerLine[line];
-
-      return acc;
-    }, {} as Record<string, number>);
-
-    // normalize
-    for (let mode of Object.keys(foundStationsPercentagePerMode)) {
-      foundStationsPercentagePerMode[mode] /= stationsPerMode[mode];
-    }
-
-    return foundStationsPercentagePerMode;
-  }, [foundStationsPerLine]);
-
   return (
     <main className="flex flex-row items-center justify-between h-screen">
       <div className="relative flex justify-center h-full grow">
@@ -378,10 +345,9 @@ export default function Home() {
         <div className="absolute h-12 max-w-full px-1 w-96 top-4 lg:top-32">
           <FoundSummary
             className="p-4 mb-4 bg-white rounded-lg shadow-md lg:hidden"
+            foundProportion={found.length / fc.properties.totalStations}
             foundStationsPerLine={foundStationsPerLine}
             stationsPerLine={fc.properties.stationsPerLine}
-            foundStationsPerMode={foundStationsPerMode}
-            minimizable
             defaultMinimized
           />
           <div className="flex gap-2 lg:gap-4">
@@ -402,14 +368,13 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-full p-6 z-10 overflow-y-auto xl:w-[32rem] lg:w-96 hidden shadow-lg lg:block bg-blue-50">
+      <div className="h-full p-6 z-10 overflow-y-auto xl:w-[32rem] lg:w-96 hidden shadow-lg lg:block bg-zinc-50">
         <FoundSummary
+          foundProportion={found.length / fc.properties.totalStations}
           foundStationsPerLine={foundStationsPerLine}
-          foundStationsPerMode={foundStationsPerMode}
           stationsPerLine={fc.properties.stationsPerLine}
-          minimizable
         />
-        <hr className="w-full my-4 border-b border-blue-100" />
+        <hr className="w-full my-4 border-b border-zinc-100" />
         <FoundList
           found={found}
           idMap={idMap}

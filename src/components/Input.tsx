@@ -110,7 +110,7 @@ const Input = ({
             "animate animate-shake": wrong,
             "!shadow-yellow-500 shadow-md": success,
           },
-          "relative transition-shadow duration-300 z-40 w-full px-4 py-2 rounded-full text-lg font-bold shadow-lg text-blue-900 outline-none focus:ring-2 ring-blue-800 caret-current"
+          "relative transition-shadow duration-300 z-40 w-full px-4 py-2 rounded-full text-lg font-bold shadow-lg text-zinc-900 outline-none focus:ring-2 ring-zinc-800 caret-current"
         )}
         ref={inputRef}
         placeholder="Station"
@@ -124,7 +124,7 @@ const Input = ({
       <Transition
         show={alreadyFound}
         as="div"
-        className="absolute right-0 top-0 mt-1 z-50 h-auto flex items-center my-auto pointer-events-none"
+        className="absolute top-0 right-0 z-50 flex items-center h-auto my-auto mt-1 pointer-events-none"
         enter="transition-opacity duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -132,7 +132,7 @@ const Input = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="bg-green-200 text-green-800 border-green-400 px-2 py-1 mr-2 my-1 rounded-full flex items-center justify-center text-sm font-bold">
+        <div className="flex items-center justify-center px-2 py-1 my-1 mr-2 text-sm font-bold text-green-800 bg-green-200 border-green-400 rounded-full">
           Already found
         </div>
       </Transition>

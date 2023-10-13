@@ -111,7 +111,7 @@ const FoundList = ({
       {sorted.length > 0 && (
         <div className="flex justify-between items-center mb-4">
           <div>
-            <p className="text-sm uppercase text-blue-900 text-opacity-75">
+            <p className="text-sm uppercase text-zinc-900 text-opacity-75">
               {sorted.length} station{sorted.length > 1 ? "s" : ""}
             </p>
           </div>

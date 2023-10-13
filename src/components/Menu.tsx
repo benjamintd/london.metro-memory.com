@@ -6,7 +6,6 @@ import MenuIcon from "./MenuIcon";
 import classNames from "classnames";
 import AboutModal from "./AboutModal";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 export default function MenuComponent({
   onReset,
@@ -17,13 +16,12 @@ export default function MenuComponent({
   hideLabels: boolean;
   setHideLabels: (hide: boolean) => void;
 }) {
-  const pathname = usePathname();
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex items-center justify-center w-12 h-12 gap-x-1.5 rounded-full bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 shadow-lg outline-none focus:ring-2 ring-blue-800">
+        <Menu.Button className="inline-flex items-center justify-center w-12 h-12 gap-x-1.5 rounded-full bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 shadow-lg outline-none focus:ring-2 ring-zinc-800">
           <MenuIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -48,7 +46,7 @@ export default function MenuComponent({
                   )}
                   onClick={onReset}
                 >
-                  Recommencer
+                  Start over
                 </button>
               )}
             </Menu.Item>
@@ -61,7 +59,7 @@ export default function MenuComponent({
                   )}
                   onClick={() => setHideLabels(!hideLabels)}
                 >
-                  {hideLabels ? "Afficher" : "Cacher"} les solutions
+                  {hideLabels ? "Show" : "Hide"} solutions
                 </button>
               )}
             </Menu.Item>
@@ -77,41 +75,11 @@ export default function MenuComponent({
                       "block px-4 py-2 text-sm text-left w-full"
                     )}
                   >
-                    Soutenir le projet
+                    Support the project
                   </a>
                 );
               }}
             </Menu.Item>
-            {pathname === "/" && (
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block px-4 py-2 text-sm text-left w-full"
-                    )}
-                    href="/rues"
-                  >
-                    Revenir à l&apos;ancien jeu
-                  </Link>
-                )}
-              </Menu.Item>
-            )}
-            {pathname != "/" && (
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block px-4 py-2 text-sm text-left w-full"
-                    )}
-                    href="/"
-                  >
-                    Voir le nouveau jeu
-                  </Link>
-                )}
-              </Menu.Item>
-            )}
             <Menu.Item>
               {({ active }) => (
                 <button
@@ -121,7 +89,7 @@ export default function MenuComponent({
                   )}
                   onClick={() => setModalOpen(true)}
                 >
-                  À propos
+                  About
                 </button>
               )}
             </Menu.Item>
