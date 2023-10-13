@@ -14,6 +14,9 @@ const ProgressBars = ({
       {Object.keys(LINES).map((line) => {
         return (
           <div
+            title={`${LINES[line].name} - ${foundStationsPerLine[line] || 0}/${
+              stationsPerLine[line]
+            }`}
             key={line}
             className="relative h-6 w-6 @md:h-8 @md:w-8 flex items-center justify-center"
           >
