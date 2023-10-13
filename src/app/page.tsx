@@ -17,8 +17,6 @@ import { DataFeatureCollection, DataFeature } from "@/lib/types";
 import Input from "@/components/Input";
 import { LINES } from "@/lib/constants";
 import useHideLabels from "@/hooks/useHideLabels";
-import augmentResults from "@/lib/augmentResults";
-import getMode from "@/lib/getMode";
 
 const fc = data as DataFeatureCollection;
 
@@ -64,13 +62,6 @@ export default function Home() {
   const found: number[] = useMemo(() => {
     return localFound || [];
   }, [localFound]);
-
-  const previousFc = usePrevious(fc);
-  useEffect(() => {
-    if (previousFc !== fc && found.length > 0) {
-      setFound(augmentResults(found, idMap, fc));
-    }
-  }, [idMap, setFound, found, previousFc]);
 
   const onReset = useCallback(() => {
     if (confirm("You are going to lose all your progress. Are you sure?")) {
