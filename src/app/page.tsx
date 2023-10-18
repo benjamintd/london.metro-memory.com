@@ -26,11 +26,6 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { hideLabels, setHideLabels } = useHideLabels(map);
   const [showStripeModal, setShowStripeModal] = useState<boolean>(false);
-  const { value: enableAllNetwork, set: setEnableAllNetwork } =
-    useLocalStorageValue<boolean>("enable-all-network", {
-      defaultValue: false,
-      initializeWithValue: false,
-    });
 
   const { value: hasShownStripeModal, set: setHasShownStripeModal } =
     useLocalStorageValue<boolean>("has-shown-stripe-modal", {
@@ -68,9 +63,8 @@ export default function Home() {
       setFound([]);
       setIsNewPlayer(true);
       setHasShownStripeModal(false);
-      setEnableAllNetwork(false);
     }
-  }, [setFound, setIsNewPlayer, setHasShownStripeModal, setEnableAllNetwork]);
+  }, [setFound, setIsNewPlayer, setHasShownStripeModal]);
 
   const foundStationsPerLine = useMemo(() => {
     const foundStationsPerLine: { [key: string]: number } = {};
