@@ -384,7 +384,7 @@ export default function Home() {
         open={isNewPlayer}
         setOpen={setIsNewPlayer}
       >
-        Tapez le nom d&apos;une station de métro, puis appuyez sur Entrée.
+        Type a station name, and press Enter ⏎
       </IntroModal>
     </main>
   );
