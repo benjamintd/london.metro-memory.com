@@ -1,47 +1,58 @@
 import { LINES } from "@/lib/constants";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import Image from "next/image";
+import classNames from "classnames";
 
 const ProgressBars = ({
   foundStationsPerLine,
   stationsPerLine,
+  minimized = false,
 }: {
   foundStationsPerLine: Record<string, number>;
   stationsPerLine: Record<string, number>;
+  minimized?: boolean;
 }) => {
   return (
-    <div className="@container grid grid-cols-[repeat(8,min-content)] gap-2">
+    <div
+      className={classNames("@container grid gap-2", {
+        "grid-cols-[repeat(7,min-content)]": minimized,
+        "grid-cols-2": !minimized,
+      })}
+    >
       {Object.keys(LINES).map((line) => {
+        const title = `${LINES[line].name} - ${
+          foundStationsPerLine[line] || 0
+        }/${stationsPerLine[line]}`;
         return (
-          <div
-            title={`${LINES[line].name} - ${foundStationsPerLine[line] || 0}/${
-              stationsPerLine[line]
-            }`}
-            key={line}
-            className="relative h-6 w-6 @md:h-8 @md:w-8 flex items-center justify-center"
-          >
-            <div className="absolute w-full h-full">
-              <CircularProgressbar
-                background
-                backgroundPadding={2}
-                styles={buildStyles({
-                  backgroundColor: LINES[line].backgroundColor,
-                  pathColor: "white",
-                  trailColor: "transparent",
-                })}
-                value={
-                  (100 * (foundStationsPerLine[line] || 0)) /
-                  stationsPerLine[line]
-                }
+          <div key={line} className="flex items-center gap-2">
+            <div
+              title={title}
+              className="relative w-8 h-8 flex items-center justify-center"
+            >
+              <div className="absolute w-full h-full shadow rounded-full">
+                <CircularProgressbar
+                  background
+                  backgroundPadding={2}
+                  styles={buildStyles({
+                    backgroundColor: "white",
+                    pathColor: LINES[line].color,
+                    trailColor: "transparent",
+                  })}
+                  value={
+                    (100 * (foundStationsPerLine[line] || 0)) /
+                    stationsPerLine[line]
+                  }
+                />
+              </div>
+              <Image
+                alt={line}
+                src={`/images/${line}.png`}
+                width={64}
+                height={64}
+                className="h-6 w-6 rounded-full z-20 object-contain"
               />
             </div>
-            <Image
-              alt={line}
-              src={`/images/${line}.png`}
-              width={64}
-              height={64}
-              className="h-4 w-4 @md:h-6 @md:w-6 rounded-full overflow-hidden z-20 object-cover"
-            />
+            {!minimized && <p className="whitespace-nowrap text-sm">{title}</p>}
           </div>
         );
       })}

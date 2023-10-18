@@ -1,4 +1,4 @@
-export const BEG_THRESHOLD = 0.3;
+export const BEG_THRESHOLD = 0.2;
 
 export const LINES: {
   [name: string]: {

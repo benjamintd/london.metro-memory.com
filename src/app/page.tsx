@@ -15,8 +15,9 @@ import FoundSummary from "@/components/FoundSummary";
 import FoundList from "@/components/FoundList";
 import { DataFeatureCollection, DataFeature } from "@/lib/types";
 import Input from "@/components/Input";
-import { LINES } from "@/lib/constants";
+import { BEG_THRESHOLD, LINES } from "@/lib/constants";
 import useHideLabels from "@/hooks/useHideLabels";
+import StripeModal from "@/components/StripeModal";
 
 const fc = data as DataFeatureCollection;
 
@@ -107,6 +108,24 @@ export default function Home() {
       }),
     []
   );
+
+  const foundProportion = found.length / fc.properties.totalStations;
+
+  useEffect(() => {
+    if (foundProportion > BEG_THRESHOLD && !hasShownStripeModal) {
+      // once we reach a certain threshold, we show the stripe modal
+      // and unlock the rest of the game.
+      setShowStripeModal(true);
+      setHasShownStripeModal(true);
+    }
+  }, [
+    hasShownStripeModal,
+    setHasShownStripeModal,
+    foundProportion,
+    found,
+    setFound,
+    idMap,
+  ]);
 
   useEffect(() => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
@@ -334,10 +353,11 @@ export default function Home() {
         <div className="absolute h-12 max-w-full px-1 w-96 top-4 lg:top-32">
           <FoundSummary
             className="p-4 mb-4 bg-white rounded-lg shadow-md lg:hidden"
-            foundProportion={found.length / fc.properties.totalStations}
+            foundProportion={foundProportion}
             foundStationsPerLine={foundStationsPerLine}
             stationsPerLine={fc.properties.stationsPerLine}
             defaultMinimized
+            minimizable
           />
           <div className="flex gap-2 lg:gap-4">
             <Input
@@ -359,9 +379,11 @@ export default function Home() {
       </div>
       <div className="h-full p-6 z-10 overflow-y-auto xl:w-[32rem] lg:w-96 hidden shadow-lg lg:block bg-zinc-50">
         <FoundSummary
-          foundProportion={found.length / fc.properties.totalStations}
+          foundProportion={foundProportion}
           foundStationsPerLine={foundStationsPerLine}
           stationsPerLine={fc.properties.stationsPerLine}
+          minimizable
+          defaultMinimized
         />
         <hr className="w-full my-4 border-b border-zinc-100" />
         <FoundList
@@ -380,6 +402,11 @@ export default function Home() {
       >
         Type a station name, and press Enter ⏎
       </IntroModal>
+      <StripeModal
+        foundProportion={foundProportion}
+        open={showStripeModal}
+        setOpen={setShowStripeModal}
+      />
     </main>
   );
 }

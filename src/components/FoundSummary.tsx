@@ -5,6 +5,8 @@ import { usePrevious } from "@react-hookz/web";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import ProgressBars from "./ProgressBars";
+import { MaximizeIcon } from "./MaximizeIcon";
+import { MinimizeIcon } from "./MinimizeIcon";
 
 const FoundSummary = ({
   className,
@@ -76,10 +78,25 @@ const FoundSummary = ({
           <span className="text-sm">stations found</span>
         </p>
         <ProgressBars
+          minimized={minimized}
           foundStationsPerLine={foundStationsPerLine}
           stationsPerLine={stationsPerLine}
         />
       </div>
+      {minimizable && (
+        <div className="absolute bottom-0 right-0">
+          <button
+            onClick={() => setMinimized(!minimized)}
+            className="text-gray-500 rounded-full flex items-center justify-center bg-white shadow w-8 h-8 my-1 mx-2"
+          >
+            {minimized ? (
+              <MaximizeIcon className="w-4 h-4" />
+            ) : (
+              <MinimizeIcon className="w-4 h-4" />
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
