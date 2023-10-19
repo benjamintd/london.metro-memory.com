@@ -83,7 +83,7 @@ export const LINES: {
   },
   WaterlooAndCity: {
     name: "Waterloo & City",
-    color: "#95cdba",
+    color: "#84CAB3",
     backgroundColor: "#005b44",
     textColor: "#222",
     order: 13,

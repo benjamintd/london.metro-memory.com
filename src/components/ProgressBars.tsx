@@ -46,7 +46,7 @@ const ProgressBars = ({
               </div>
               <Image
                 alt={line}
-                src={`/images/${line}.png`}
+                src={`/images/${line}.svg`}
                 width={64}
                 height={64}
                 className="h-6 w-6 rounded-full z-20 object-contain"
