@@ -32,26 +32,12 @@ export const LINES: {
     textColor: "#222",
     order: 2,
   },
-  DLR: {
-    name: "DLR",
-    color: "#00afad",
-    backgroundColor: "#006d6b",
-    textColor: "#fff",
-    order: 3,
-  },
   District: {
     name: "District",
     color: "#00782a",
     backgroundColor: "#00441b",
     textColor: "#fff",
     order: 4,
-  },
-  ElizabethLine: {
-    name: "Elizabeth Line",
-    color: "#6950A1",
-    backgroundColor: "#2b1d4d",
-    textColor: "#fff",
-    order: 5,
   },
   HammersmithAndCity: {
     name: "Hammersmith & City",
@@ -81,13 +67,6 @@ export const LINES: {
     textColor: "#fff",
     order: 9,
   },
-  Overground: {
-    name: "Overground",
-    color: "#e86a10",
-    backgroundColor: "#7f3300",
-    textColor: "#fff",
-    order: 10,
-  },
   Piccadilly: {
     name: "Piccadilly",
     color: "#003688",
@@ -108,5 +87,26 @@ export const LINES: {
     backgroundColor: "#005b44",
     textColor: "#222",
     order: 13,
+  },
+  DLR: {
+    name: "DLR",
+    color: "#00afad",
+    backgroundColor: "#006d6b",
+    textColor: "#fff",
+    order: 14,
+  },
+  Overground: {
+    name: "Overground",
+    color: "#e86a10",
+    backgroundColor: "#7f3300",
+    textColor: "#fff",
+    order: 15,
+  },
+  ElizabethLine: {
+    name: "Elizabeth Line",
+    color: "#6950A1",
+    backgroundColor: "#2b1d4d",
+    textColor: "#fff",
+    order: 16,
   },
 };

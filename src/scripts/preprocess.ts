@@ -1,6 +1,7 @@
 import * as path from "path";
-import { groupBy, mapValues } from "lodash";
+import { groupBy, mapValues, sortBy } from "lodash";
 import { promises as fs } from "fs";
+import { LINES } from "@/lib/constants";
 
 const Bun = {
   file(path: string) {
@@ -62,6 +63,7 @@ const main = async () => {
           line: route.live_line_code,
           name: route.name,
           color: route.color,
+          order: LINES[route.live_line_code].order,
         },
       };
     });
@@ -71,7 +73,10 @@ const main = async () => {
     path.join(__dirname, "../data/features.json"),
     JSON.stringify({
       type: "FeatureCollection",
-      features: featuresStations,
+      features: sortBy(
+        featuresStations,
+        (f) => -(LINES[f.properties.line].order || Infinity)
+      ),
       properties: {
         totalStations: featuresStations.length,
         stationsPerLine: mapValues(
@@ -86,7 +91,10 @@ const main = async () => {
     path.join(__dirname, "../data/routes.json"),
     JSON.stringify({
       type: "FeatureCollection",
-      features: featuresRoutes,
+      features: sortBy(
+        featuresRoutes,
+        (f) => -(LINES[f.properties.line].order || Infinity)
+      ),
     })
   );
 };

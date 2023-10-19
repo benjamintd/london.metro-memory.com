@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import data from "@/data/features.json";
 import Fuse from "fuse.js";
-import { useLocalStorageValue, usePrevious } from "@react-hookz/web";
+import { useLocalStorageValue } from "@react-hookz/web";
 import mapboxgl from "mapbox-gl";
 import { coordEach } from "@turf/meta";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -132,7 +132,7 @@ export default function Home() {
 
     const mapboxMap = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/benjamintd/clnn5gpss008301qp0qpfef1j",
+      style: "mapbox://styles/benjamintd/clnx0tw77005n01qsfyeya61u",
       bounds: [
         [-0.619997, 51.323273],
         [0.35504, 51.68869],
@@ -229,7 +229,10 @@ export default function Home() {
         minzoom: 11,
         layout: {
           "text-field": ["to-string", ["get", "name"]],
-          "text-font": ["Parisine Regular", "Arial Unicode MS Regular"], // @todo
+          "text-font": [
+            "Johnston100W03-Regular Regular",
+            "Arial Unicode MS Regular",
+          ],
           "text-anchor": "bottom",
           "text-offset": [0, -0.5],
           "text-size": ["interpolate", ["linear"], ["zoom"], 11, 12, 22, 14],
@@ -266,7 +269,10 @@ export default function Home() {
         },
         layout: {
           "text-field": ["to-string", ["get", "name"]],
-          "text-font": ["Parisine Bold", "Arial Unicode MS Regular"], // @todo
+          "text-font": [
+            "Johnston100W03-Medium Regular",
+            "Arial Unicode MS Regular",
+          ],
           "text-anchor": "bottom",
           "text-offset": [0, -0.6],
           "text-size": ["interpolate", ["linear"], ["zoom"], 11, 14, 22, 16],
