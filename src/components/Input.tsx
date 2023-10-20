@@ -6,6 +6,7 @@ import { useState, KeyboardEventHandler, useCallback } from "react";
 import Fuse from "fuse.js";
 import { DataFeature } from "@/lib/types";
 import { Transition } from "@headlessui/react";
+import { Feature, Point } from "geojson";
 
 const Input = ({
   fuse,
@@ -28,6 +29,23 @@ const Input = ({
   const [wrong, setWrong] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [alreadyFound, setAlreadyFound] = useState<boolean>(false);
+
+  const zoomToStation = useCallback(
+    (id: number) => {
+      if (map) {
+        const feature = idMap.get(id) as Feature<Point>;
+        console.log(feature);
+        if (!feature) return;
+        const [lng, lat] = feature.geometry.coordinates;
+        map.flyTo({
+          center: [lng, lat],
+          zoom: 13,
+          duration: 200,
+        });
+      }
+    },
+    [map, idMap]
+  );
 
   const onKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback(
     (e) => {
@@ -84,6 +102,7 @@ const Input = ({
           }, 1500);
         }
 
+        zoomToStation(matches[0]);
         setFound([...matches, ...(found || [])]);
         setIsNewPlayer(false);
         setSearch("");
@@ -99,6 +118,7 @@ const Input = ({
       setIsNewPlayer,
       map,
       idMap,
+      zoomToStation,
     ]
   );
 

@@ -4,6 +4,7 @@ export const removeAccents = (str?: string) =>
     .normalize("NFD")
     .replace(/[\u2010-\u2015]/g, " ")
     .replace(/street/g, "st")
+    .replace(/ road/g, " rd")
     .replace(/saint /g, "st ")
     .replace(/ and /g, " ")
     .replace(/ & /g, " ")
