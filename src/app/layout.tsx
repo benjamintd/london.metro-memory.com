@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       "How many of the London Tube stations can you name from memory?",
     type: "website",
     locale: "en_GB",
-    url: "https://london-memory.vercel.app/",
+    url: "https://london.metro-memory.com/",
   },
 };
 
