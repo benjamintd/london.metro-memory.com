@@ -20,12 +20,11 @@ const font = localFont({
 });
 export const metadata: Metadata = {
   title: "London Tube Memory Game",
-  description:
-    "How many of the London Underground stations can you name from memory?",
+  description: "How many of the London Tube stations can you name from memory?",
   openGraph: {
     title: "London Tube Memory Game",
     description:
-      "How many of the London Underground stations can you name from memory?",
+      "How many of the London Tube stations can you name from memory?",
     type: "website",
     locale: "en_GB",
     url: "https://london-memory.vercel.app/",

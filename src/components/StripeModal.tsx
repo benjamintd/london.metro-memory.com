@@ -52,7 +52,8 @@ export default function StripeModal({
                   <p className="text-sm mb-2">This game is free.</p>
                   <p className="text-sm mb-4">
                     Support the development of
-                    <strong>London Metro Memory</strong> by making a donation.
+                    <strong>London Tube Metro Memory</strong> by making a
+                    donation.
                   </p>
 
                   <p className="mb-2 text-xs text-gray-700">
