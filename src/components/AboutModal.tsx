@@ -45,7 +45,7 @@ export default function AboutModal({
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Made by{" "}
+                        Made with ☕️ by{" "}
                         <a
                           href="https://twitter.com/_benjamintd"
                           target="_blank"
