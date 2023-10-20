@@ -27,7 +27,7 @@ const ProgressBars = ({
           <div key={line} className="flex items-center gap-2">
             <div
               title={title}
-              className="relative w-8 h-8 flex items-center justify-center"
+              className="relative w-8 h-8 flex items-center justify-center shrink-0"
             >
               <div className="absolute w-full h-full shadow rounded-full">
                 <CircularProgressbar
@@ -52,7 +52,9 @@ const ProgressBars = ({
                 className="h-6 w-6 rounded-full z-20 object-contain"
               />
             </div>
-            {!minimized && <p className="whitespace-nowrap text-sm">{title}</p>}
+            {!minimized && (
+              <p className="whitespace-nowrap text-sm truncate">{title}</p>
+            )}
           </div>
         );
       })}
