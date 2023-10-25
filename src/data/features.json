@@ -3775,12 +3775,6 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-0.301221, 51.5149] },
-      "properties": { "id": 305, "name": "Ealing Broadway", "line": "Circle" },
-      "id": 305
-    },
-    {
-      "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [-0.192503, 51.500673] },
       "properties": {
         "id": 319,
@@ -4289,7 +4283,7 @@
       "District": 60,
       "HammersmithAndCity": 29,
       "Victoria": 16,
-      "Circle": 37,
+      "Circle": 36,
       "Metropolitan": 34,
       "Bakerloo": 25,
       "WaterlooAndCity": 2
