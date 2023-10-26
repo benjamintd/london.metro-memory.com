@@ -1,22 +1,13 @@
 import Analytics from "@/components/Analytics";
 import "./globals.css";
 import { Metadata } from "next";
-import localFont from "next/font/local";
+import { Cabin } from "next/font/google";
 
-const font = localFont({
-  src: [
-    {
-      path: "../fonts/sans.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/sans-bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-sans",
+const font = Cabin({
+  weight: ["400", "700"],
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
 });
 export const metadata: Metadata = {
   title: "London Tube Memory Game",
