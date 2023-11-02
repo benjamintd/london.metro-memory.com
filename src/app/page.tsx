@@ -19,7 +19,10 @@ import { BEG_THRESHOLD, LINES } from "@/lib/constants";
 import useHideLabels from "@/hooks/useHideLabels";
 import StripeModal from "@/components/StripeModal";
 
-const fc = data as DataFeatureCollection;
+const fc = {
+  ...data,
+  features: data.features.filter((f) => !!LINES[f.properties.line]),
+} as DataFeatureCollection;
 
 export default function Home() {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
@@ -56,8 +59,8 @@ export default function Home() {
     });
 
   const found: number[] = useMemo(() => {
-    return localFound || [];
-  }, [localFound]);
+    return (localFound || []).filter((f) => idMap.has(f));
+  }, [localFound, idMap]);
 
   const onReset = useCallback(() => {
     if (confirm("You are going to lose all your progress. Are you sure?")) {
@@ -109,7 +112,7 @@ export default function Home() {
     []
   );
 
-  const foundProportion = found.length / fc.properties.totalStations;
+  const foundProportion = found.length / fc.features.length;
 
   useEffect(() => {
     if (foundProportion > BEG_THRESHOLD && !hasShownStripeModal) {
