@@ -2,9 +2,14 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "https://metro-memory.com/london",
+        permanent: true,
+      },
+    ];
   },
 };
 
