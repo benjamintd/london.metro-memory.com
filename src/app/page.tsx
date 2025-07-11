@@ -357,8 +357,8 @@ export default function Home() {
 
   return (
     <main className="flex flex-row items-center justify-between h-screen">
-      <div className="relative flex justify-center h-full grow">
-        <div className="absolute top-0 left-0 w-full h-full" id="map" />
+      <div className="relative flex justify-center h-screen grow">
+        <div className="absolute top-0 left-0 w-full h-screen" id="map" />
         <div className="absolute h-12 max-w-full px-1 w-96 top-4 lg:top-32">
           <FoundSummary
             className="p-4 mb-4 bg-white rounded-lg shadow-md lg:hidden"
