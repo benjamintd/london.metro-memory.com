@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef,
+} from "react";
 import data from "@/data/features.json";
 import Fuse from "fuse.js";
 import { useLocalStorageValue } from "@react-hookz/web";
@@ -28,6 +34,7 @@ export default function Home() {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const mainRef = useRef<HTMLElement | null>(null);
   const { hideLabels, setHideLabels } = useHideLabels(map);
   const [showStripeModal, setShowStripeModal] = useState<boolean>(false);
 
@@ -129,6 +136,20 @@ export default function Home() {
     setFound,
     idMap,
   ]);
+
+  useEffect(() => {
+    const node = mainRef.current;
+    if (!node) return;
+    const removeStyle = () => {
+      node.removeAttribute("style");
+    };
+    removeStyle();
+    const observer = new MutationObserver(() => removeStyle());
+    observer.observe(node, { attributes: true, attributeFilter: ["style"] });
+    return () => {
+      observer.disconnect();
+    };
+  }, [mainRef]);
 
   useEffect(() => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
@@ -356,7 +377,10 @@ export default function Home() {
   );
 
   return (
-    <main className="flex flex-row items-center justify-between min-h-screen">
+    <main
+      ref={mainRef}
+      className="flex flex-row items-center justify-between min-h-screen"
+    >
       <div className="relative flex justify-center min-h-screen grow">
         <div className="absolute top-0 left-0 w-full h-screen" id="map" />
         <div className="absolute h-12 max-w-full px-1 w-96 top-4 lg:top-32">
